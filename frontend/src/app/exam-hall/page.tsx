@@ -170,18 +170,18 @@ function ExamHallContent() {
     const isMarkedReview = reviewMarks[currentQuestionIndex];
 
     return (
-      <div className="space-y-6 pb-20 max-w-6xl mx-auto">
+      <div className="space-y-6 pb-20 max-w-6xl mx-auto font-sans">
         {/* Distraction-Free Sticky Exam Header */}
-        <div className="sticky top-16 z-20 flex items-center justify-between p-4 bg-[#0A101E]/95 backdrop-blur-md border border-slate-800 rounded-2xl shadow-xl">
+        <div className="sticky top-16 z-20 flex items-center justify-between p-4 bg-[#FAF8F3]/95 backdrop-blur-md border border-[#E7E3D9] rounded-2xl shadow-sm">
           <div className="flex items-center gap-3">
-            <span className="p-2 rounded-xl bg-blue-600/20 text-blue-400">
+            <span className="p-2 rounded-xl bg-white text-[#24483B] border border-[#E7E3D9]">
               <GraduationCap className="w-5 h-5" />
             </span>
             <div>
-              <h2 className="text-sm md:text-base font-bold text-white line-clamp-1">
+              <h2 className="text-sm md:text-base font-serif font-bold text-[#252A27] line-clamp-1 font-bengali">
                 {activeSession.title}
               </h2>
-              <div className="text-[11px] text-slate-400">
+              <div className="text-[11px] text-[#737A73] font-bengali">
                 মোট প্রশ্ন: {activeSession.total_questions}টি • নেগেটিভ: -{activeSession.negative_mark_rate}
               </div>
             </div>
@@ -199,7 +199,7 @@ function ExamHallContent() {
 
             <button
               onClick={() => setShowConfirmModal(true)}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs transition-colors shadow-md shadow-rose-600/20"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-rose-700 hover:bg-rose-800 text-white font-semibold text-xs transition-colors shadow-sm font-bengali"
             >
               <Send className="w-3.5 h-3.5" />
               <span>সাবমিট করুন</span>
@@ -211,20 +211,20 @@ function ExamHallContent() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Question Canvas (2 Columns) */}
           <div className="lg:col-span-2 space-y-5">
-            <div className="bg-[#0E1626] border border-slate-800 rounded-3xl p-6 md:p-8 shadow-xl">
+            <div className="bg-white border border-[#E7E3D9] rounded-3xl p-6 md:p-8 shadow-sm">
               {/* Question Metadata */}
-              <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
+              <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E7E3D9]">
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-1 rounded-lg bg-blue-600/20 text-blue-400 font-bold text-xs border border-blue-500/30">
+                  <span className="px-2.5 py-1 rounded-lg bg-[#FAF8F3] text-[#24483B] font-bold text-xs border border-[#E7E3D9] font-bengali">
                     প্রশ্ন {currentQuestionIndex + 1}
                   </span>
                   {activeQ.subject_name_bn && (
-                    <span className="text-xs font-semibold text-slate-300">
+                    <span className="text-xs font-semibold text-[#24483B] font-bengali">
                       {activeQ.subject_name_bn}
                     </span>
                   )}
                   {activeQ.topic_name && (
-                    <span className="text-xs text-slate-500">
+                    <span className="text-xs text-[#737A73] font-bengali">
                       • {activeQ.topic_name}
                     </span>
                   )}
@@ -232,10 +232,10 @@ function ExamHallContent() {
 
                 <button
                   onClick={toggleReviewMark}
-                  className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all ${
+                  className={`flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border transition-all font-bengali ${
                     isMarkedReview
-                      ? "bg-violet-600 text-white border-violet-400 shadow-sm"
-                      : "bg-slate-900 border-slate-700 text-slate-400 hover:text-slate-200"
+                      ? "bg-[#B69A70] text-white border-[#9E835B] shadow-xs"
+                      : "bg-[#FAF8F3] border-[#E7E3D9] text-[#737A73] hover:text-[#252A27]"
                   }`}
                 >
                   <Bookmark className="w-3.5 h-3.5" />
@@ -244,7 +244,7 @@ function ExamHallContent() {
               </div>
 
               {/* Question Text */}
-              <h3 className="text-lg md:text-xl font-medium text-slate-100 leading-relaxed mb-6">
+              <h3 className="text-lg md:text-xl font-medium text-[#252A27] leading-relaxed mb-6 font-bengali">
                 {activeQ.question_text_bn || activeQ.question_text}
               </h3>
 
@@ -256,17 +256,17 @@ function ExamHallContent() {
                     <button
                       key={idx}
                       onClick={() => handleSelectOption(idx)}
-                      className={`w-full flex items-start gap-3.5 p-4 rounded-2xl border text-left text-sm md:text-base transition-all ${
+                      className={`w-full flex items-start gap-3.5 p-4 rounded-2xl border text-left text-sm md:text-base transition-all font-bengali ${
                         isSelected
-                          ? "bg-blue-600/20 border-blue-500 text-white font-medium shadow-md shadow-blue-500/10 ring-1 ring-blue-500/50"
-                          : "bg-slate-900/60 hover:bg-slate-800/80 border-slate-800 text-slate-200"
+                          ? "bg-[#F0FDF4] border-[#86EFAC] text-[#166534] font-medium shadow-xs ring-1 ring-[#86EFAC]"
+                          : "bg-[#FAF8F3] hover:bg-[#EFECE3] border-[#E7E3D9] text-[#252A27]"
                       }`}
                     >
                       <span
                         className={`flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-lg text-xs font-bold transition-colors ${
                           isSelected
-                            ? "bg-blue-600 text-white"
-                            : "bg-slate-800 text-slate-300"
+                            ? "bg-[#24483B] text-white"
+                            : "bg-[#EFECE3] text-[#252A27]"
                         }`}
                       >
                         {activeQ.language === "BN" ? optionLabels[idx] : optionLetters[idx]}
@@ -278,11 +278,11 @@ function ExamHallContent() {
               </div>
 
               {/* Bottom Nav: Prev, Clear, Next */}
-              <div className="flex items-center justify-between pt-6 mt-6 border-t border-slate-800/80">
+              <div className="flex items-center justify-between pt-6 mt-6 border-t border-[#E7E3D9]">
                 <button
                   disabled={isFirst}
                   onClick={() => setCurrentQuestionIndex((prev) => Math.max(0, prev - 1))}
-                  className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-800 disabled:opacity-30 text-slate-300 text-xs font-semibold hover:bg-slate-700 transition-colors"
+                  className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white border border-[#E7E3D9] disabled:opacity-30 text-[#252A27] text-xs font-semibold hover:bg-[#FAF8F3] transition-colors font-bengali"
                 >
                   <ChevronLeft className="w-4 h-4" /> পূর্ববর্তী
                 </button>
@@ -290,7 +290,7 @@ function ExamHallContent() {
                 {selectedOption !== null && selectedOption !== undefined && (
                   <button
                     onClick={() => handleSelectOption(selectedOption)}
-                    className="text-xs text-rose-400 hover:text-rose-300 font-semibold"
+                    className="text-xs text-rose-700 hover:text-rose-800 font-semibold font-bengali"
                   >
                     উত্তর বাতিল করুন (Clear Answer)
                   </button>
@@ -299,7 +299,7 @@ function ExamHallContent() {
                 <button
                   disabled={isLast}
                   onClick={() => setCurrentQuestionIndex((prev) => Math.min(activeSession.questions.length - 1, prev + 1))}
-                  className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-blue-600 disabled:opacity-30 hover:bg-blue-500 text-white text-xs font-bold transition-colors"
+                  className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#24483B] disabled:opacity-30 hover:bg-[#1B362C] text-white text-xs font-bold transition-colors font-bengali"
                 >
                   পরবর্তী <ChevronRight className="w-4 h-4" />
                 </button>
@@ -318,13 +318,13 @@ function ExamHallContent() {
             />
 
             {/* Submit Confirmation Card */}
-            <div className="p-4 bg-slate-900/90 border border-slate-800 rounded-2xl text-center space-y-2">
-              <div className="text-xs text-slate-400">
+            <div className="p-4 bg-white border border-[#E7E3D9] rounded-2xl text-center space-y-2 shadow-sm">
+              <div className="text-xs text-[#737A73] font-bengali">
                 পরীক্ষা সম্পন্ন হলে নিচের বাটনে ক্লিক করে ফলাফল দেখুন
               </div>
               <button
                 onClick={() => setShowConfirmModal(true)}
-                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs shadow-md transition-all"
+                className="w-full py-2.5 rounded-xl bg-[#24483B] hover:bg-[#1B362C] text-white font-semibold text-xs shadow-sm transition-all font-bengali"
               >
                 পরীক্ষা সম্পন্ন ও সাবমিট করুন
               </button>
@@ -334,32 +334,32 @@ function ExamHallContent() {
 
         {/* Confirmation Modal */}
         {showConfirmModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-            <div className="bg-[#0E1626] border border-slate-800 rounded-3xl p-6 max-w-md w-full shadow-2xl space-y-4">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
+            <div className="bg-white border border-[#E7E3D9] rounded-3xl p-6 max-w-md w-full shadow-xl space-y-4 font-sans">
               <div className="flex items-center gap-3">
-                <span className="p-2.5 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                <span className="p-2.5 rounded-xl bg-amber-50 text-amber-700 border border-amber-200">
                   <AlertTriangle className="w-6 h-6" />
                 </span>
                 <div>
-                  <h3 className="font-bold text-base text-white">
+                  <h3 className="font-serif font-bold text-base text-[#252A27]">
                     পরীক্ষা সাবমিট নিশ্চিতকরণ
                   </h3>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-[#737A73] font-bengali">
                     আপনি কি এখনই পরীক্ষাটি সমাপ্ত করতে চান?
                   </p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 p-3 bg-slate-900 rounded-xl text-center text-xs">
+              <div className="grid grid-cols-2 gap-2 p-3 bg-[#FAF8F3] border border-[#E7E3D9] rounded-xl text-center text-xs">
                 <div>
-                  <div className="text-slate-400">উত্তর দেওয়া হয়েছে:</div>
-                  <div className="text-lg font-bold text-blue-400 mt-0.5">
+                  <div className="text-[#737A73] font-bengali">উত্তর দেওয়া হয়েছে:</div>
+                  <div className="text-lg font-serif font-bold text-[#24483B] mt-0.5">
                     {Object.values(answers).filter((v) => v !== null && v !== undefined).length} টি
                   </div>
                 </div>
                 <div>
-                  <div className="text-slate-400">বাকি রয়েছে:</div>
-                  <div className="text-lg font-bold text-slate-400 mt-0.5">
+                  <div className="text-[#737A73] font-bengali">বাকি রয়েছে:</div>
+                  <div className="text-lg font-serif font-bold text-[#737A73] mt-0.5">
                     {activeSession.questions.length - Object.values(answers).filter((v) => v !== null && v !== undefined).length} টি
                   </div>
                 </div>
@@ -369,7 +369,7 @@ function ExamHallContent() {
                 <button
                   type="button"
                   onClick={() => setShowConfirmModal(false)}
-                  className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold"
+                  className="px-4 py-2 rounded-xl bg-[#FAF8F3] hover:bg-[#EFECE3] text-[#252A27] text-xs font-semibold border border-[#E7E3D9] font-bengali"
                 >
                   ফিরে যান
                 </button>
@@ -377,7 +377,7 @@ function ExamHallContent() {
                   type="button"
                   disabled={isSubmitting}
                   onClick={handleFinalSubmit}
-                  className="px-5 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold shadow-md shadow-rose-600/30"
+                  className="px-5 py-2 rounded-xl bg-rose-700 hover:bg-rose-800 text-white text-xs font-bold shadow-sm font-bengali"
                 >
                   {isSubmitting ? "ফলাফল তৈরি হচ্ছে..." : "হ্যাঁ, সাবমিট করুন"}
                 </button>
@@ -391,18 +391,18 @@ function ExamHallContent() {
 
   // ================= VIEW: LOBBY & CONFIGURATION =================
   return (
-    <div className="space-y-8 pb-16">
+    <div className="space-y-8 pb-16 font-sans">
       {/* Lobby Header */}
-      <div className="p-6 md:p-8 bg-gradient-to-r from-[#0E1626] via-[#121B2F] to-[#0D1527] border border-slate-800 rounded-3xl shadow-xl">
+      <div className="p-6 md:p-8 bg-white border border-[#E7E3D9] rounded-3xl shadow-sm">
         <div className="max-w-2xl space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-400">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF8F3] border border-[#E7E3D9] text-xs font-semibold text-[#24483B] font-bengali">
             <GraduationCap className="w-3.5 h-3.5" />
             <span>বাস্তবসম্মত সিমুলেশন ইঞ্জিন</span>
           </div>
-          <h1 className="text-2xl md:text-3xl font-black text-white">
+          <h1 className="text-2xl md:text-3xl font-serif font-bold text-[#252A27]">
             পরীক্ষা হল (Exam Hall)
           </h1>
-          <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
+          <p className="text-xs md:text-sm text-[#737A73] leading-relaxed font-bengali">
             পূর্ণাঙ্গ মক টেস্ট, বিষয়ভিত্তিক টেস্ট অথবা আপনার ইচ্ছামতো কাস্টমাইজড পরীক্ষা দিন।
             সঠিক ও ভুলের স্বয়ংক্রিয় মূল্যায়ন, নেগেটিভ মার্কিং এবং ইন-ডেপথ ব্যাখ্যা রিপোর্ট।
           </p>
@@ -411,8 +411,8 @@ function ExamHallContent() {
 
       {/* Preset Mock Tests Grid */}
       <div className="space-y-4">
-        <h2 className="text-lg font-bold text-white flex items-center gap-2">
-          <Award className="w-5 h-5 text-blue-400" />
+        <h2 className="text-lg font-serif font-bold text-[#252A27] flex items-center gap-2">
+          <Award className="w-5 h-5 text-[#B69A70]" />
           স্ট্যান্ডার্ড মক টেস্ট টেমপ্লেট (Featured Mock Exams)
         </h2>
 
@@ -420,33 +420,33 @@ function ExamHallContent() {
           {templates.map((tmpl) => (
             <div
               key={tmpl.id}
-              className="bg-[#0E1626] border border-slate-800 rounded-2xl p-5 hover:border-blue-500/50 transition-all flex flex-col justify-between shadow-lg"
+              className="bg-white border border-[#E7E3D9] rounded-2xl p-5 hover:border-[#24483B]/40 transition-all flex flex-col justify-between shadow-sm"
             >
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-blue-600/20 text-blue-400 border border-blue-500/30">
+                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded bg-[#FAF8F3] text-[#24483B] border border-[#E7E3D9]">
                     {tmpl.target_exam}
                   </span>
-                  <span className="text-xs font-mono font-semibold text-slate-400">
+                  <span className="text-xs font-mono font-medium text-[#737A73]">
                     {tmpl.duration_minutes} মিনিট
                   </span>
                 </div>
-                <h3 className="font-bold text-base text-white mt-2 leading-snug">
+                <h3 className="font-serif font-bold text-base text-[#252A27] mt-2 leading-snug font-bengali">
                   {tmpl.title_bn}
                 </h3>
-                <p className="text-xs text-slate-400 mt-2 line-clamp-2">
+                <p className="text-xs text-[#737A73] mt-2 line-clamp-2 font-bengali">
                   {tmpl.description}
                 </p>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between">
-                <div className="text-xs text-slate-400">
-                  <span className="font-bold text-slate-200">{tmpl.total_questions}টি প্রশ্ন</span> •{" "}
-                  <span className="text-rose-400">-{tmpl.negative_mark_rate} নেগেটিভ</span>
+              <div className="pt-4 mt-4 border-t border-[#E7E3D9] flex items-center justify-between">
+                <div className="text-xs text-[#737A73] font-bengali">
+                  <span className="font-semibold text-[#252A27]">{tmpl.total_questions}টি প্রশ্ন</span> •{" "}
+                  <span className="text-rose-700 font-medium">-{tmpl.negative_mark_rate} নেগেটিভ</span>
                 </div>
                 <button
                   onClick={() => handleStartExam(tmpl.id)}
-                  className="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-colors shadow-sm flex items-center gap-1.5"
+                  className="px-3.5 py-1.5 rounded-xl bg-[#24483B] hover:bg-[#1B362C] text-white font-semibold text-xs transition-colors shadow-sm flex items-center gap-1.5 font-bengali"
                 >
                   <Play className="w-3.5 h-3.5 fill-current" />
                   শুরু করুন
@@ -458,16 +458,16 @@ function ExamHallContent() {
       </div>
 
       {/* Custom Examination Builder */}
-      <div className="bg-[#0E1626] border border-slate-800 rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
-        <div className="flex items-center gap-3 pb-4 border-b border-slate-800">
-          <span className="p-2.5 rounded-xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30">
+      <div className="bg-white border border-[#E7E3D9] rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
+        <div className="flex items-center gap-3 pb-4 border-b border-[#E7E3D9]">
+          <span className="p-2.5 rounded-xl bg-[#FAF8F3] text-[#24483B] border border-[#E7E3D9]">
             <Settings className="w-5 h-5" />
           </span>
           <div>
-            <h3 className="text-base md:text-lg font-bold text-white">
+            <h3 className="text-base md:text-lg font-serif font-bold text-[#252A27]">
               কাস্টম পরীক্ষা কনফিগারেশন (Custom Exam Builder)
             </h3>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-[#737A73] font-bengali">
               আপনার নির্দিষ্ট দুর্বলতা ও সময় অনুযায়ী বিষয়, প্রশ্নসংখ্যা এবং নেগেটিভ মার্কিং কাস্টমাইজ করুন
             </p>
           </div>
@@ -476,13 +476,13 @@ function ExamHallContent() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Questions Count */}
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1.5">
+            <label className="block text-xs font-semibold text-[#252A27] mb-1.5 font-bengali">
               প্রশ্নের সংখ্যা
             </label>
             <select
               value={customQuestionsCount}
               onChange={(e) => setCustomQuestionsCount(Number(e.target.value))}
-              className="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-200 outline-none"
+              className="w-full p-2.5 bg-[#FAF8F3] border border-[#E7E3D9] rounded-xl text-xs text-[#252A27] outline-none focus:border-[#24483B] font-bengali"
             >
               <option value={10}>১০টি প্রশ্ন (কুইক ড্রিল)</option>
               <option value={20}>২০টি প্রশ্ন (স্ট্যান্ডার্ড)</option>
@@ -494,13 +494,13 @@ function ExamHallContent() {
 
           {/* Duration */}
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1.5">
+            <label className="block text-xs font-semibold text-[#252A27] mb-1.5 font-bengali">
               সময়সীমা (মিনিট)
             </label>
             <select
               value={customDurationMinutes}
               onChange={(e) => setCustomDurationMinutes(Number(e.target.value))}
-              className="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-200 outline-none"
+              className="w-full p-2.5 bg-[#FAF8F3] border border-[#E7E3D9] rounded-xl text-xs text-[#252A27] outline-none focus:border-[#24483B] font-bengali"
             >
               <option value={10}>১০ মিনিট</option>
               <option value={20}>২০ মিনিট</option>
@@ -512,13 +512,13 @@ function ExamHallContent() {
 
           {/* Negative Marking */}
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1.5">
+            <label className="block text-xs font-semibold text-[#252A27] mb-1.5 font-bengali">
               নেগেটিভ মার্কিং রেট
             </label>
             <select
               value={negativeMarkRate}
               onChange={(e) => setNegativeMarkRate(Number(e.target.value))}
-              className="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-200 outline-none"
+              className="w-full p-2.5 bg-[#FAF8F3] border border-[#E7E3D9] rounded-xl text-xs text-[#252A27] outline-none focus:border-[#24483B] font-bengali"
             >
               <option value={0.5}>০.৫০ (বিসিএস প্রিলিমিনারি মানদণ্ড)</option>
               <option value={0.25}>০.২৫ (ব্যাংক ও শিক্ষক নিয়োগ মানদণ্ড)</option>
@@ -528,13 +528,13 @@ function ExamHallContent() {
 
           {/* Question Source */}
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1.5">
+            <label className="block text-xs font-semibold text-[#252A27] mb-1.5 font-bengali">
               প্রশ্নের উৎস
             </label>
             <select
               value={questionSource}
               onChange={(e) => setQuestionSource(e.target.value)}
-              className="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-200 outline-none"
+              className="w-full p-2.5 bg-[#FAF8F3] border border-[#E7E3D9] rounded-xl text-xs text-[#252A27] outline-none focus:border-[#24483B] font-bengali"
             >
               <option value="ALL">সকল উৎস (বিগত + এআই সম্ভাব্য)</option>
               <option value="AUTHENTIC_ONLY">কেবলমাত্র পূর্ববর্তী ঐতিহাসিক প্রশ্ন</option>
@@ -545,7 +545,7 @@ function ExamHallContent() {
 
         {/* Multi-Subject Selection */}
         <div>
-          <label className="block text-xs font-bold text-slate-300 mb-2">
+          <label className="block text-xs font-semibold text-[#252A27] mb-2 font-bengali">
             বিষয় নির্বাচন করুন (একাধিক নির্বাচন করা যাবে):
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
@@ -562,21 +562,21 @@ function ExamHallContent() {
                       setSelectedSubjects([...selectedSubjects, s.id]);
                     }
                   }}
-                  className={`p-2.5 rounded-xl border text-xs text-left font-medium transition-all ${
+                  className={`p-2.5 rounded-xl border text-xs text-left font-medium transition-all font-bengali ${
                     isSelected
-                      ? "bg-blue-600/25 border-blue-500 text-white shadow-sm"
-                      : "bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200 hover:bg-slate-800"
+                      ? "bg-[#F0FDF4] border-[#86EFAC] text-[#166534] shadow-xs"
+                      : "bg-[#FAF8F3] border-[#E7E3D9] text-[#737A73] hover:text-[#252A27] hover:bg-[#EFECE3]"
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <span className="truncate">{s.name_bn}</span>
-                    {isSelected && <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />}
+                    {isSelected && <CheckCircle2 className="w-3.5 h-3.5 text-[#166534] flex-shrink-0" />}
                   </div>
                 </button>
               );
             })}
           </div>
-          <div className="text-[11px] text-slate-500 mt-1">
+          <div className="text-[11px] text-[#737A73] mt-1 font-bengali">
             * কোনো বিষয় নির্বাচন না করলে স্বয়ংক্রিয়ভাবে সকল বিষয়ের ভারসাম্যপূর্ণ প্রশ্ন সেট হবে।
           </div>
         </div>
@@ -585,7 +585,7 @@ function ExamHallContent() {
         <div className="pt-2">
           <button
             onClick={() => handleStartExam()}
-            className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 text-white font-extrabold text-sm shadow-xl shadow-blue-600/25 transition-all flex items-center justify-center gap-2 active:scale-98"
+            className="w-full py-3.5 rounded-2xl bg-[#24483B] hover:bg-[#1B362C] text-white font-semibold text-sm shadow-sm transition-all flex items-center justify-center gap-2 active:scale-98 font-bengali"
           >
             <Play className="w-4 h-4 fill-current" />
             কাস্টম পরীক্ষা শুরু করুন
@@ -598,7 +598,7 @@ function ExamHallContent() {
 
 export default function ExamHallPage() {
   return (
-    <Suspense fallback={<div className="p-8 text-center text-xs text-slate-500">পরীক্ষা হল লোড হচ্ছে...</div>}>
+    <Suspense fallback={<div className="p-8 text-center text-xs text-[#737A73] font-bengali">পরীক্ষা হল লোড হচ্ছে...</div>}>
       <ExamHallContent />
     </Suspense>
   );

@@ -88,26 +88,26 @@ export default function MyCollectionsPage() {
   };
 
   return (
-    <div className="space-y-6 pb-20">
+    <div className="space-y-6 pb-20 font-sans">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 md:p-8 bg-gradient-to-r from-[#0E1626] to-[#141C30] border border-slate-800 rounded-3xl shadow-xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 md:p-8 bg-white border border-[#E7E3D9] rounded-3xl shadow-sm">
         <div>
           <div className="flex items-center gap-2">
-            <span className="p-2 rounded-xl bg-blue-600/20 text-blue-400">
+            <span className="p-2 rounded-xl bg-[#FAF8F3] text-[#24483B] border border-[#E7E3D9]">
               <BookmarkCheck className="w-5 h-5" />
             </span>
-            <h1 className="text-xl md:text-2xl font-black text-white">
+            <h1 className="text-xl md:text-2xl font-serif font-bold text-[#252A27]">
               আমার সংগ্রহ ও বুকমার্ক (My Collections)
             </h1>
           </div>
-          <p className="text-xs md:text-sm text-slate-300 mt-1 max-w-xl">
+          <p className="text-xs md:text-sm text-[#737A73] mt-1 max-w-xl font-bengali">
             আপনার পছন্দের প্রশ্ন, পাঠ্য উপকরণ এবং ব্যক্তিগত কাস্টম প্র্যাকটিস সেট এক জায়গায় সাজিয়ে রাখুন।
           </p>
         </div>
 
         <button
           onClick={() => setIsCreating(true)}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md transition-all self-start sm:self-auto"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#24483B] hover:bg-[#1B362C] text-white font-semibold text-xs shadow-sm transition-all self-start sm:self-auto font-bengali"
         >
           <FolderPlus className="w-4 h-4" />
           <span>নতুন সংগ্রহ ফোল্ডার</span>
@@ -115,23 +115,23 @@ export default function MyCollectionsPage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-800 pb-2">
+      <div className="flex items-center gap-2 border-b border-[#E7E3D9] pb-2">
         <button
           onClick={() => setActiveTab("COLLECTIONS")}
-          className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors ${
+          className={`px-4 py-2 rounded-xl text-xs font-semibold transition-colors font-bengali ${
             activeTab === "COLLECTIONS"
-              ? "bg-blue-600 text-white"
-              : "text-slate-400 hover:text-white"
+              ? "bg-[#24483B] text-white shadow-xs"
+              : "text-[#737A73] hover:text-[#252A27]"
           }`}
         >
           কাস্টম সংগ্রহ ফোল্ডার ({collections.length})
         </button>
         <button
           onClick={() => setActiveTab("BOOKMARKS")}
-          className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors ${
+          className={`px-4 py-2 rounded-xl text-xs font-semibold transition-colors font-bengali ${
             activeTab === "BOOKMARKS"
-              ? "bg-blue-600 text-white"
-              : "text-slate-400 hover:text-white"
+              ? "bg-[#24483B] text-white shadow-xs"
+              : "text-[#737A73] hover:text-[#252A27]"
           }`}
         >
           বুকমার্ক করা আইটেম ({bookmarks.length})
@@ -140,13 +140,13 @@ export default function MyCollectionsPage() {
 
       {/* Create Modal */}
       {isCreating && (
-        <form onSubmit={handleCreateCollection} className="p-5 rounded-2xl bg-[#0E1626] border border-blue-500/50 shadow-xl space-y-4 max-w-lg">
-          <h3 className="font-bold text-sm text-white flex items-center gap-2">
-            <FolderPlus className="w-4 h-4 text-blue-400" />
+        <form onSubmit={handleCreateCollection} className="p-5 rounded-2xl bg-white border border-[#E7E3D9] shadow-sm space-y-4 max-w-lg">
+          <h3 className="font-serif font-bold text-sm text-[#252A27] flex items-center gap-2 font-bengali">
+            <FolderPlus className="w-4 h-4 text-[#24483B]" />
             নতুন সংগ্রহ তৈরি করুন
           </h3>
           <div>
-            <label className="block text-xs text-slate-300 font-semibold mb-1">
+            <label className="block text-xs text-[#252A27] font-semibold mb-1 font-bengali">
               সংগ্রহের নাম (যেমন: কঠিন ইংরেজি ভোকাবুলারি, সংবিধান অনুচ্ছেদ)
             </label>
             <input
@@ -154,31 +154,31 @@ export default function MyCollectionsPage() {
               required
               value={newCollectionName}
               onChange={(e) => setNewCollectionName(e.target.value)}
-              className="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-200 outline-none"
+              className="w-full p-2.5 bg-[#FAF8F3] border border-[#E7E3D9] rounded-xl text-xs text-[#252A27] outline-none focus:border-[#24483B] font-bengali"
             />
           </div>
           <div>
-            <label className="block text-xs text-slate-300 font-semibold mb-1">
+            <label className="block text-xs text-[#252A27] font-semibold mb-1 font-bengali">
               বিবরণ (ঐচ্ছিক)
             </label>
             <input
               type="text"
               value={newCollectionDesc}
               onChange={(e) => setNewCollectionDesc(e.target.value)}
-              className="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-200 outline-none"
+              className="w-full p-2.5 bg-[#FAF8F3] border border-[#E7E3D9] rounded-xl text-xs text-[#252A27] outline-none focus:border-[#24483B] font-bengali"
             />
           </div>
           <div className="flex justify-end gap-2 pt-2">
             <button
               type="button"
               onClick={() => setIsCreating(false)}
-              className="px-3 py-1.5 rounded-lg bg-slate-800 text-xs text-slate-300"
+              className="px-3 py-1.5 rounded-lg bg-[#FAF8F3] border border-[#E7E3D9] text-xs text-[#252A27] font-bengali"
             >
               বাতিল
             </button>
             <button
               type="submit"
-              className="px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold"
+              className="px-4 py-1.5 rounded-lg bg-[#24483B] hover:bg-[#1B362C] text-white text-xs font-semibold shadow-xs font-bengali"
             >
               তৈরি করুন
             </button>
@@ -192,7 +192,7 @@ export default function MyCollectionsPage() {
           {/* Collection Folders List (4 of 12) */}
           <div className="lg:col-span-4 space-y-3">
             {collections.length === 0 ? (
-              <div className="p-8 text-center bg-[#0E1626] border border-slate-800 rounded-2xl text-xs text-slate-400">
+              <div className="p-8 text-center bg-white border border-[#E7E3D9] rounded-2xl text-xs text-[#737A73] font-bengali shadow-sm">
                 এখনও কোনো কাস্টম সংগ্রহ তৈরি করা হয়নি। &quot;নতুন সংগ্রহ ফোল্ডার&quot; বাটনে ক্লিক করে তৈরি করুন।
               </div>
             ) : (
@@ -207,22 +207,22 @@ export default function MyCollectionsPage() {
                     }}
                     className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-center justify-between ${
                       isSelected
-                        ? "bg-blue-600/15 border-blue-500 shadow-md"
-                        : "bg-[#0E1626] border-slate-800 hover:border-slate-700"
+                        ? "bg-[#F0FDF4] border-[#86EFAC] shadow-xs"
+                        : "bg-white border-[#E7E3D9] hover:border-[#24483B]/40 hover:bg-[#FAF8F3]"
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <Folder className={`w-5 h-5 ${isSelected ? "text-blue-400" : "text-slate-400"}`} />
+                      <Folder className={`w-5 h-5 ${isSelected ? "text-[#166534]" : "text-[#737A73]"}`} />
                       <div>
-                        <h4 className="font-semibold text-sm text-slate-100">
+                        <h4 className="font-serif font-semibold text-sm text-[#252A27] font-bengali">
                           {c.name}
                         </h4>
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-[#737A73] font-bengali">
                           {c.question_count}টি সংরক্ষিত প্রশ্ন
                         </span>
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-500" />
+                    <ArrowRight className="w-4 h-4 text-[#737A73]" />
                   </div>
                 );
               })
@@ -233,19 +233,19 @@ export default function MyCollectionsPage() {
           <div className="lg:col-span-8 space-y-4">
             {selectedCollection ? (
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-[#0E1626] border border-slate-800 rounded-2xl">
+                <div className="flex items-center justify-between p-4 bg-white border border-[#E7E3D9] rounded-2xl shadow-sm">
                   <div>
-                    <h3 className="font-bold text-base text-white">
+                    <h3 className="font-serif font-bold text-base text-[#252A27] font-bengali">
                       {selectedCollection.name}
                     </h3>
-                    <p className="text-xs text-slate-400">
+                    <p className="text-xs text-[#737A73] font-bengali">
                       {selectedCollection.description || "ব্যক্তিগত কাস্টম সংগ্রহ"}
                     </p>
                   </div>
                   {collectionQuestions.length > 0 && (
                     <Link
                       href={`/exam-hall?custom_collection_id=${selectedCollection.id}`}
-                      className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md"
+                      className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#24483B] hover:bg-[#1B362C] text-white font-semibold text-xs shadow-sm font-bengali"
                     >
                       <Play className="w-3.5 h-3.5 fill-current" />
                       অনুশীলন পরীক্ষা দিন
@@ -254,10 +254,10 @@ export default function MyCollectionsPage() {
                 </div>
 
                 {loadingQuestions ? (
-                  <div className="h-40 rounded-2xl bg-slate-900 border border-slate-800 animate-pulse" />
+                  <div className="h-40 rounded-2xl bg-white border border-[#E7E3D9] animate-pulse" />
                 ) : collectionQuestions.length === 0 ? (
-                  <div className="p-12 text-center bg-[#0E1626] border border-slate-800 rounded-3xl text-slate-400 space-y-2">
-                    <p className="text-sm font-semibold text-slate-300">
+                  <div className="p-12 text-center bg-white border border-[#E7E3D9] rounded-3xl text-[#737A73] space-y-2 shadow-sm font-bengali">
+                    <p className="text-sm font-semibold text-[#252A27]">
                       এই ফোল্ডারে এখনও কোনো প্রশ্ন যুক্ত করা হয়নি
                     </p>
                     <p className="text-xs">
@@ -265,7 +265,7 @@ export default function MyCollectionsPage() {
                     </p>
                     <Link
                       href="/question-bank"
-                      className="inline-block mt-3 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-blue-400 text-xs font-semibold rounded-xl"
+                      className="inline-block mt-3 px-4 py-2 bg-[#FAF8F3] border border-[#E7E3D9] hover:bg-[#EFECE3] text-[#24483B] text-xs font-semibold rounded-xl"
                     >
                       প্রশ্নব্যাংক ব্রাউজ করুন
                     </Link>
@@ -279,7 +279,7 @@ export default function MyCollectionsPage() {
                 )}
               </div>
             ) : (
-              <div className="p-12 text-center bg-[#0E1626] border border-slate-800 rounded-2xl text-slate-400 text-xs">
+              <div className="p-12 text-center bg-white border border-[#E7E3D9] rounded-2xl text-[#737A73] text-xs font-bengali shadow-sm">
                 একটি সংগ্রহ নির্বাচন করুন
               </div>
             )}
@@ -291,24 +291,24 @@ export default function MyCollectionsPage() {
       {activeTab === "BOOKMARKS" && (
         <div className="space-y-3">
           {bookmarks.length === 0 ? (
-            <div className="p-12 text-center bg-[#0E1626] border border-slate-800 rounded-3xl text-slate-400 text-xs">
+            <div className="p-12 text-center bg-white border border-[#E7E3D9] rounded-3xl text-[#737A73] text-xs font-bengali shadow-sm">
               এখনও কোনো আইটেম বুকমার্ক করা হয়নি।
             </div>
           ) : (
             bookmarks.map((b) => (
               <div
                 key={b.id}
-                className="p-4 rounded-2xl bg-[#0E1626] border border-slate-800 flex items-center justify-between gap-4"
+                className="p-4 rounded-2xl bg-white border border-[#E7E3D9] flex items-center justify-between gap-4 shadow-sm"
               >
                 <div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-600/20 text-blue-400 border border-blue-500/30">
+                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-[#FAF8F3] text-[#24483B] border border-[#E7E3D9]">
                     {b.item_type}
                   </span>
-                  <h4 className="text-sm font-semibold text-slate-100 mt-1">
+                  <h4 className="font-serif font-semibold text-sm text-[#252A27] mt-1 font-bengali">
                     {b.item_data?.title || `আইটেম #${b.item_id}`}
                   </h4>
                   {b.item_data?.subject && (
-                    <span className="text-xs text-slate-400">
+                    <span className="text-xs text-[#737A73] font-bengali">
                       বিষয়: {b.item_data.subject}
                     </span>
                   )}
@@ -317,13 +317,13 @@ export default function MyCollectionsPage() {
                 <div className="flex items-center gap-2">
                   <Link
                     href={b.item_type === "RESOURCE" ? `/study-resources?id=${b.item_id}` : `/question-bank?q=${b.item_id}`}
-                    className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-blue-400 text-xs font-semibold"
+                    className="px-3 py-1.5 rounded-lg bg-[#FAF8F3] border border-[#E7E3D9] hover:bg-[#EFECE3] text-[#24483B] text-xs font-semibold font-bengali"
                   >
                     দেখুন
                   </Link>
                   <button
                     onClick={() => handleRemoveBookmark(b.id)}
-                    className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800"
+                    className="p-1.5 rounded-lg text-[#737A73] hover:text-rose-700 hover:bg-[#FAF8F3]"
                     title="মুছে ফেলুন"
                   >
                     <Trash2 className="w-4 h-4" />

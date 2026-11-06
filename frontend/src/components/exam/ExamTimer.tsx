@@ -50,20 +50,24 @@ export const ExamTimer: React.FC<ExamTimerProps> = ({
     <div
       className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl border font-mono font-bold text-sm tracking-wider shadow-sm transition-all ${
         isLowTime
-          ? "bg-rose-950/70 border-rose-500/80 text-rose-300 animate-pulse"
-          : "bg-slate-900 border-slate-700 text-blue-400"
+          ? "bg-rose-50 border-rose-300 text-rose-700 animate-pulse"
+          : "bg-white border-[#E7E3D9] text-[#24483B]"
       }`}
     >
       {isLowTime ? (
-        <AlertCircle className="w-4 h-4 text-rose-400" />
+        <AlertCircle className="w-4 h-4 text-rose-600" />
       ) : (
-        <Clock className="w-4 h-4 text-blue-400" />
+        <Clock className="w-4 h-4 text-[#24483B]" />
       )}
       <span>
         {hours > 0 && `${formatDigits(hours)}:`}
         {formatDigits(minutes)}:{formatDigits(seconds)}
       </span>
-      {isLowTime && <span className="text-[10px] uppercase font-sans font-semibold text-rose-400">সময় শেষের দিকে</span>}
+      {isLowTime && (
+        <span className="text-[10px] uppercase font-sans font-semibold text-rose-600 font-bengali">
+          সময় শেষের দিকে
+        </span>
+      )}
     </div>
   );
 };

@@ -77,18 +77,18 @@ function StudyResourcesContent() {
   };
 
   return (
-    <div className="space-y-6 pb-20">
+    <div className="space-y-6 pb-20 font-sans">
       {/* Header */}
-      <div className="p-6 md:p-8 bg-gradient-to-r from-[#0E1626] to-[#141F36] border border-slate-800 rounded-3xl shadow-xl">
+      <div className="p-6 md:p-8 bg-white border border-[#E7E3D9] rounded-3xl shadow-sm">
         <div className="flex items-center gap-2">
-          <span className="p-2 rounded-xl bg-blue-600/20 text-blue-400">
+          <span className="p-2 rounded-xl bg-[#FAF8F3] text-[#24483B] border border-[#E7E3D9]">
             <BookOpen className="w-5 h-5" />
           </span>
-          <h1 className="text-xl md:text-2xl font-black text-white">
+          <h1 className="text-xl md:text-2xl font-serif font-bold text-[#252A27]">
             স্টাডি রিসোর্স লাইব্রেরি (Study Resources)
           </h1>
         </div>
-        <p className="text-xs md:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
+        <p className="text-xs md:text-sm text-[#737A73] mt-1 max-w-2xl leading-relaxed font-bengali">
           ১০টি মৌলিক বিষয়ের অধ্যায়ভিত্তিক নোট, সংবিধান বিশ্লেষণ, ইংরেজি ও বাংলা ব্যাকরণ বিধি,
           এবং গাণিতিক সূত্রের প্রামাণ্য ডিজিটাল লাইব্রেরি।
         </p>
@@ -96,20 +96,20 @@ function StudyResourcesContent() {
         {/* Filter bar */}
         <div className="flex flex-col sm:flex-row gap-3 pt-5">
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#737A73]" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="নোট বা টপিক খুঁজুন..."
-              className="w-full pl-10 pr-4 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-200 placeholder-slate-400 outline-none"
+              className="w-full pl-10 pr-4 py-2 bg-[#FAF8F3] border border-[#E7E3D9] rounded-xl text-xs text-[#252A27] placeholder-[#737A73] outline-none focus:border-[#24483B] font-bengali"
             />
           </div>
 
           <select
             value={selectedSubjectId}
             onChange={(e) => setSelectedSubjectId(e.target.value)}
-            className="p-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-200 outline-none"
+            className="p-2 bg-[#FAF8F3] border border-[#E7E3D9] rounded-xl text-xs text-[#252A27] outline-none focus:border-[#24483B] font-bengali"
           >
             <option value="">সকল ১০টি বিষয়</option>
             {meta?.subjects.map((s) => (
@@ -125,7 +125,7 @@ function StudyResourcesContent() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Resource Items Column (4 of 12) */}
         <div className="lg:col-span-4 space-y-3">
-          <div className="text-xs font-bold uppercase tracking-wider text-slate-400 px-1">
+          <div className="text-xs font-semibold uppercase tracking-wider text-[#737A73] px-1 font-bengali">
             উপলব্ধ রিসোর্স সংকলন ({resources.length})
           </div>
 
@@ -138,20 +138,20 @@ function StudyResourcesContent() {
                   onClick={() => setSelectedResource(r)}
                   className={`p-4 rounded-2xl border cursor-pointer transition-all ${
                     isSelected
-                      ? "bg-blue-600/15 border-blue-500 shadow-md shadow-blue-500/10"
-                      : "bg-[#0E1626] border-slate-800 hover:border-slate-700 hover:bg-slate-900/60"
+                      ? "bg-[#F0FDF4] border-[#86EFAC] shadow-xs"
+                      : "bg-white border-[#E7E3D9] hover:border-[#24483B]/40 hover:bg-[#FAF8F3]"
                   }`}
                 >
-                  <div className="flex items-center justify-between text-[11px] font-bold text-blue-400">
+                  <div className="flex items-center justify-between text-[11px] font-semibold text-[#24483B] font-bengali">
                     <span>{r.subject_name_bn || "সাধারণ"}</span>
-                    <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+                    <span className="px-2 py-0.5 rounded bg-[#FAF8F3] border border-[#E7E3D9] text-[#737A73]">
                       {r.resource_type}
                     </span>
                   </div>
-                  <h4 className="font-semibold text-sm text-slate-100 mt-1.5 leading-snug">
+                  <h4 className="font-serif font-semibold text-sm text-[#252A27] mt-1.5 leading-snug font-bengali">
                     {r.title_bn || r.title}
                   </h4>
-                  <p className="text-xs text-slate-400 mt-1 line-clamp-2">
+                  <p className="text-xs text-[#737A73] mt-1 line-clamp-2 font-bengali">
                     {r.summary}
                   </p>
                 </div>
@@ -163,19 +163,19 @@ function StudyResourcesContent() {
         {/* Reader Canvas Column (8 of 12) */}
         <div className="lg:col-span-8">
           {selectedResource ? (
-            <div className="bg-[#0E1626] border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl space-y-6">
+            <div className="bg-white border border-[#E7E3D9] rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
               {/* Reader Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-800">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[#E7E3D9]">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-1 rounded-lg bg-blue-600/20 text-blue-400 text-xs font-bold border border-blue-500/30">
+                    <span className="px-2.5 py-1 rounded-lg bg-[#FAF8F3] text-[#24483B] text-xs font-semibold border border-[#E7E3D9] font-bengali">
                       {selectedResource.subject_name_bn || "বিষয়"}
                     </span>
-                    <span className="text-xs text-slate-400 font-medium">
+                    <span className="text-xs text-[#737A73] font-medium font-bengali">
                       সম্পাদনা: {selectedResource.author}
                     </span>
                   </div>
-                  <h2 className="text-lg md:text-xl font-bold text-white mt-2 leading-snug">
+                  <h2 className="text-lg md:text-xl font-serif font-bold text-[#252A27] mt-2 leading-snug font-bengali">
                     {selectedResource.title_bn || selectedResource.title}
                   </h2>
                 </div>
@@ -183,10 +183,10 @@ function StudyResourcesContent() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={handleBookmarkResource}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold transition-colors ${
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold transition-colors font-bengali ${
                       bookmarked
-                        ? "bg-amber-500/20 border-amber-500/40 text-amber-300"
-                        : "bg-slate-900 border-slate-700 text-slate-300 hover:text-white"
+                        ? "bg-[#FEFCE8] border-[#FEF08A] text-[#854D0E]"
+                        : "bg-[#FAF8F3] border-[#E7E3D9] text-[#737A73] hover:text-[#252A27]"
                     }`}
                   >
                     <Bookmark className="w-3.5 h-3.5 fill-current" />
@@ -196,21 +196,21 @@ function StudyResourcesContent() {
               </div>
 
               {/* Reader Markdown Content */}
-              <div className="prose prose-invert max-w-none text-slate-200 text-sm md:text-base leading-relaxed space-y-4">
-                <div className="whitespace-pre-line font-sans">
+              <div className="max-w-none text-[#252A27] text-sm md:text-base leading-relaxed space-y-4 font-bengali">
+                <div className="whitespace-pre-line">
                   {selectedResource.content_markdown}
                 </div>
               </div>
 
               {/* Personal Notes Section */}
-              <div className="pt-6 border-t border-slate-800/80 space-y-3">
+              <div className="pt-6 border-t border-[#E7E3D9] space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-                    <PenSquare className="w-4 h-4 text-blue-400" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#252A27] flex items-center gap-1.5 font-bengali">
+                    <PenSquare className="w-4 h-4 text-[#24483B]" />
                     ব্যক্তিগত স্টাডি নোট (Personal Reflection Notes)
                   </span>
                   {noteSaved && (
-                    <span className="text-xs font-bold text-emerald-400 flex items-center gap-1">
+                    <span className="text-xs font-bold text-[#166534] flex items-center gap-1 font-bengali">
                       <Check className="w-3.5 h-3.5" /> নোট সংরক্ষিত হয়েছে
                     </span>
                   )}
@@ -220,12 +220,12 @@ function StudyResourcesContent() {
                   onChange={(e) => setPersonalNote(e.target.value)}
                   placeholder="এই টপিক বা অধ্যায়ের উপর আপনার নিজস্ব সারসংক্ষেপ বা গুরুত্বপূর্ণ পয়েন্টগুলো লিখে রাখুন..."
                   rows={3}
-                  className="w-full p-3 bg-slate-900/90 border border-slate-800 rounded-xl text-xs md:text-sm text-slate-200 placeholder-slate-500 outline-none focus:border-blue-500"
+                  className="w-full p-3 bg-[#FAF8F3] border border-[#E7E3D9] rounded-xl text-xs md:text-sm text-[#252A27] placeholder-[#737A73] outline-none focus:border-[#24483B] font-bengali"
                 />
                 <div className="flex justify-end">
                   <button
                     onClick={handleSaveNote}
-                    className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold transition-colors"
+                    className="px-4 py-2 bg-[#24483B] hover:bg-[#1B362C] text-white rounded-xl text-xs font-semibold transition-colors font-bengali shadow-sm"
                   >
                     নোট সংরক্ষণ করুন
                   </button>
@@ -233,8 +233,8 @@ function StudyResourcesContent() {
               </div>
             </div>
           ) : (
-            <div className="p-16 text-center rounded-3xl bg-[#0E1626] border border-slate-800 text-slate-400">
-              <FileText className="w-10 h-10 mx-auto text-slate-600 mb-2" />
+            <div className="p-16 text-center rounded-3xl bg-white border border-[#E7E3D9] text-[#737A73] font-bengali">
+              <FileText className="w-10 h-10 mx-auto text-[#737A73] mb-2" />
               <p className="text-sm">বাম পাশ থেকে যেকোনো নোট বা পাঠ্য উপকরণ নির্বাচন করুন</p>
             </div>
           )}
@@ -246,7 +246,7 @@ function StudyResourcesContent() {
 
 export default function StudyResourcesPage() {
   return (
-    <Suspense fallback={<div className="p-8 text-center text-xs text-slate-500">স্টাডি রিসোর্স লোড হচ্ছে...</div>}>
+    <Suspense fallback={<div className="p-8 text-center text-xs text-[#737A73] font-bengali">স্টাডি রিসোর্স লোড হচ্ছে...</div>}>
       <StudyResourcesContent />
     </Suspense>
   );

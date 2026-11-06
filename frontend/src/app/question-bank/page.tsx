@@ -102,19 +102,19 @@ function QuestionBankContent() {
   const totalPages = Math.ceil(totalCount / pageSize);
 
   return (
-    <div className="space-y-6 pb-16">
+    <div className="space-y-6 pb-16 font-sans">
       {/* Header Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 bg-gradient-to-r from-[#0E1626] to-[#121B2F] border border-slate-800 rounded-3xl shadow-xl">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 bg-white border border-[#E7E3D9] rounded-3xl shadow-sm">
         <div>
           <div className="flex items-center gap-2">
-            <span className="p-2 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30">
+            <span className="p-2 rounded-xl bg-[#FAF8F3] text-[#24483B] border border-[#E7E3D9]">
               <Database className="w-5 h-5" />
             </span>
-            <h1 className="text-xl md:text-2xl font-black text-white">
+            <h1 className="text-xl md:text-2xl font-serif font-bold text-[#252A27]">
               প্রশ্নব্যাংক (Question Bank)
             </h1>
           </div>
-          <p className="text-xs md:text-sm text-slate-300 mt-1.5 max-w-2xl leading-relaxed">
+          <p className="text-xs md:text-sm text-[#737A73] mt-1.5 max-w-2xl leading-relaxed font-bengali">
             বিসিএস, বাংলাদেশ ব্যাংক, পিএসসি নন-ক্যাডার, প্রাথমিক শিক্ষক ও জুডিশিয়াল সার্ভিস পরীক্ষার
             প্রমাণিত প্রশ্ন সংকলন। প্রতিটি প্রশ্নের জন্য রয়েছে নির্ভুল উত্তর ও প্রামাণ্য ব্যাখ্যা।
           </p>
@@ -124,10 +124,10 @@ function QuestionBankContent() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsContinuousPractice(!isContinuousPractice)}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shadow-md ${
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all shadow-sm font-bengali ${
               isContinuousPractice
-                ? "bg-violet-600 text-white shadow-violet-600/30 ring-2 ring-violet-400/50"
-                : "bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700"
+                ? "bg-[#24483B] text-white ring-1 ring-[#24483B]"
+                : "bg-[#FAF8F3] hover:bg-[#EFECE3] text-[#252A27] border border-[#E7E3D9]"
             }`}
           >
             <PlayCircle className="w-4 h-4" />
@@ -147,10 +147,10 @@ function QuestionBankContent() {
       />
 
       {/* Result Status Bar */}
-      <div className="flex items-center justify-between px-2 text-xs font-semibold text-slate-400">
+      <div className="flex items-center justify-between px-2 text-xs font-medium text-[#737A73] font-bengali">
         <span>
           মোট প্রশ্ন পাওয়া গেছে:{" "}
-          <strong className="text-white">{totalCount}</strong> টি
+          <strong className="text-[#252A27] font-semibold">{totalCount}</strong> টি
         </span>
         {totalPages > 1 && (
           <span>
@@ -165,22 +165,22 @@ function QuestionBankContent() {
           {[1, 2, 3].map((n) => (
             <div
               key={n}
-              className="h-44 rounded-2xl bg-slate-900/60 border border-slate-800 animate-pulse"
+              className="h-44 rounded-2xl bg-white border border-[#E7E3D9] animate-pulse"
             />
           ))}
         </div>
       ) : questions.length === 0 ? (
-        <div className="p-12 text-center rounded-3xl bg-[#0E1626] border border-slate-800 space-y-3">
-          <ListFilter className="w-10 h-10 text-slate-500 mx-auto" />
-          <h3 className="text-base font-bold text-slate-200">
+        <div className="p-12 text-center rounded-3xl bg-white border border-[#E7E3D9] space-y-3 shadow-sm">
+          <ListFilter className="w-10 h-10 text-[#737A73] mx-auto" />
+          <h3 className="text-base font-serif font-bold text-[#252A27]">
             কোনো প্রশ্ন পাওয়া যায়নি
           </h3>
-          <p className="text-xs text-slate-400 max-w-md mx-auto">
+          <p className="text-xs text-[#737A73] max-w-md mx-auto font-bengali">
             আপনার ফিল্টার বা অনুসন্ধানের কিওয়ার্ডটি পরিবর্তন করে পুনরায় চেষ্টা করুন।
           </p>
           <button
             onClick={handleResetFilters}
-            className="px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-semibold hover:bg-blue-500 transition-colors"
+            className="px-4 py-2 bg-[#24483B] text-white rounded-xl text-xs font-semibold hover:bg-[#1B362C] transition-colors font-bengali"
           >
             ফিল্টার রিসেট করুন
           </button>
@@ -188,7 +188,7 @@ function QuestionBankContent() {
       ) : isContinuousPractice ? (
         /* Continuous Single Question Practice View */
         <div className="space-y-4 max-w-3xl mx-auto">
-          <div className="flex items-center justify-between text-xs text-slate-400 font-semibold px-2">
+          <div className="flex items-center justify-between text-xs text-[#737A73] font-medium px-2 font-bengali">
             <span>
               অনুশীলন ক্রম: {practiceActiveIndex + 1} / {questions.length}
             </span>
@@ -196,14 +196,14 @@ function QuestionBankContent() {
               <button
                 disabled={practiceActiveIndex === 0}
                 onClick={() => setPracticeActiveIndex((prev) => Math.max(0, prev - 1))}
-                className="p-1.5 rounded-lg bg-slate-800 disabled:opacity-40 text-slate-200 hover:bg-slate-700"
+                className="p-1.5 rounded-lg bg-white border border-[#E7E3D9] disabled:opacity-40 text-[#252A27] hover:bg-[#FAF8F3]"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
                 disabled={practiceActiveIndex === questions.length - 1}
                 onClick={() => setPracticeActiveIndex((prev) => Math.min(questions.length - 1, prev + 1))}
-                className="p-1.5 rounded-lg bg-slate-800 disabled:opacity-40 text-slate-200 hover:bg-slate-700"
+                className="p-1.5 rounded-lg bg-white border border-[#E7E3D9] disabled:opacity-40 text-[#252A27] hover:bg-[#FAF8F3]"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -220,14 +220,14 @@ function QuestionBankContent() {
             <button
               disabled={practiceActiveIndex === 0}
               onClick={() => setPracticeActiveIndex((prev) => Math.max(0, prev - 1))}
-              className="px-4 py-2 rounded-xl bg-slate-800 disabled:opacity-40 text-slate-300 font-semibold text-xs flex items-center gap-1.5"
+              className="px-4 py-2 rounded-xl bg-white border border-[#E7E3D9] disabled:opacity-40 text-[#252A27] font-semibold text-xs flex items-center gap-1.5 hover:bg-[#FAF8F3] font-bengali"
             >
               <ChevronLeft className="w-4 h-4" /> পূর্ববর্তী প্রশ্ন
             </button>
             <button
               disabled={practiceActiveIndex === questions.length - 1}
               onClick={() => setPracticeActiveIndex((prev) => Math.min(questions.length - 1, prev + 1))}
-              className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-white font-semibold text-xs flex items-center gap-1.5"
+              className="px-4 py-2 rounded-xl bg-[#24483B] hover:bg-[#1B362C] disabled:opacity-40 text-white font-semibold text-xs flex items-center gap-1.5 font-bengali"
             >
               পরবর্তী প্রশ্ন <ChevronRight className="w-4 h-4" />
             </button>
@@ -250,7 +250,7 @@ function QuestionBankContent() {
               <button
                 disabled={currentPage <= 1}
                 onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
-                className="flex items-center gap-1 px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300 hover:bg-slate-800 disabled:opacity-40"
+                className="flex items-center gap-1 px-3 py-2 rounded-xl bg-white border border-[#E7E3D9] text-xs font-semibold text-[#252A27] hover:bg-[#FAF8F3] disabled:opacity-40 font-bengali"
               >
                 <ChevronLeft className="w-4 h-4" /> পূর্ববর্তী
               </button>
@@ -264,8 +264,8 @@ function QuestionBankContent() {
                       onClick={() => setCurrentPage(pNum)}
                       className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
                         currentPage === pNum
-                          ? "bg-blue-600 text-white font-bold"
-                          : "bg-slate-900 text-slate-400 hover:bg-slate-800 border border-slate-800"
+                          ? "bg-[#24483B] text-white font-bold"
+                          : "bg-white text-[#737A73] hover:bg-[#FAF8F3] border border-[#E7E3D9]"
                       }`}
                     >
                       {pNum}
@@ -277,7 +277,7 @@ function QuestionBankContent() {
               <button
                 disabled={currentPage >= totalPages}
                 onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
-                className="flex items-center gap-1 px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300 hover:bg-slate-800 disabled:opacity-40"
+                className="flex items-center gap-1 px-3 py-2 rounded-xl bg-white border border-[#E7E3D9] text-xs font-semibold text-[#252A27] hover:bg-[#FAF8F3] disabled:opacity-40 font-bengali"
               >
                 পরবর্তী <ChevronRight className="w-4 h-4" />
               </button>
@@ -291,7 +291,7 @@ function QuestionBankContent() {
 
 export default function QuestionBankPage() {
   return (
-    <Suspense fallback={<div className="p-8 text-center text-xs text-slate-500">প্রশ্নব্যাংক লোড হচ্ছে...</div>}>
+    <Suspense fallback={<div className="p-8 text-center text-xs text-[#737A73] font-bengali">প্রশ্নব্যাংক লোড হচ্ছে...</div>}>
       <QuestionBankContent />
     </Suspense>
   );

@@ -88,21 +88,21 @@ export default function AIAssistantPage() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-8rem)] max-w-4xl mx-auto pb-4">
+    <div className="flex flex-col h-[calc(100vh-8rem)] max-w-4xl mx-auto pb-4 font-sans">
       {/* Header */}
-      <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
+      <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E7E3D9]">
         <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 text-white shadow-lg shadow-violet-600/25">
+          <div className="flex items-center justify-center w-10 h-10 rounded-2xl bg-[#24483B] text-white shadow-xs">
             <Bot className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-lg font-bold text-white flex items-center gap-2">
+            <h1 className="text-lg font-serif font-bold text-[#252A27] flex items-center gap-2">
               Prostuti AI — স্টাডি অ্যাসিস্ট্যান্ট
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#F0FDF4] text-[#166534] border border-[#BBF7D0]">
                 Active Mentor
               </span>
             </h1>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-[#737A73] font-bengali">
               বিসিএস, ব্যাংক ও সরকারি চাকরি প্রস্তুতির জন্য সার্বক্ষণিক একাডেমিক সহায়তা
             </p>
           </div>
@@ -118,9 +118,9 @@ export default function AIAssistantPage() {
               },
             ])
           }
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:bg-slate-800 text-slate-300 text-xs font-semibold transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-[#E7E3D9] hover:bg-[#FAF8F3] text-[#252A27] text-xs font-semibold transition-colors font-bengali"
         >
-          <RotateCcw className="w-3.5 h-3.5" />
+          <RotateCcw className="w-3.5 h-3.5 text-[#737A73]" />
           <span>নতুন চ্যাট</span>
         </button>
       </div>
@@ -138,8 +138,8 @@ export default function AIAssistantPage() {
               <div
                 className={`flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-xl text-xs font-bold ${
                   isUser
-                    ? "bg-blue-600 text-white"
-                    : "bg-gradient-to-br from-violet-600 to-indigo-600 text-white"
+                    ? "bg-[#FAF8F3] border border-[#E7E3D9] text-[#24483B]"
+                    : "bg-[#24483B] text-white"
                 }`}
               >
                 {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
@@ -147,23 +147,23 @@ export default function AIAssistantPage() {
 
               {/* Message Bubble */}
               <div
-                className={`max-w-[85%] rounded-3xl p-4 md:p-5 text-sm leading-relaxed shadow-md relative group ${
+                className={`max-w-[85%] rounded-3xl p-4 md:p-5 text-sm leading-relaxed shadow-xs relative group ${
                   isUser
-                    ? "bg-blue-600 text-white rounded-tr-sm"
-                    : "bg-[#0E1626] border border-slate-800 text-slate-200 rounded-tl-sm"
+                    ? "bg-[#24483B] text-white rounded-tr-sm"
+                    : "bg-white border border-[#E7E3D9] text-[#252A27] rounded-tl-sm"
                 }`}
               >
-                <div className="whitespace-pre-line prose prose-invert max-w-none text-xs md:text-sm">
+                <div className="whitespace-pre-line max-w-none text-xs md:text-sm font-bengali leading-relaxed">
                   {m.content}
                 </div>
 
                 {!isUser && (
                   <button
                     onClick={() => handleCopy(m.content, idx)}
-                    className="absolute top-3 right-3 p-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white opacity-0 group-hover:opacity-100 transition-all text-xs"
+                    className="absolute top-3 right-3 p-1.5 rounded-lg bg-[#FAF8F3] border border-[#E7E3D9] text-[#737A73] hover:text-[#252A27] opacity-0 group-hover:opacity-100 transition-all text-xs"
                     title="কপি করুন"
                   >
-                    {copiedIdx === idx ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedIdx === idx ? <Check className="w-3.5 h-3.5 text-[#166534]" /> : <Copy className="w-3.5 h-3.5" />}
                   </button>
                 )}
               </div>
@@ -173,11 +173,11 @@ export default function AIAssistantPage() {
 
         {isLoading && (
           <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-violet-600 text-white">
+            <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-[#24483B] text-white">
               <Bot className="w-4 h-4" />
             </div>
-            <div className="p-4 rounded-3xl bg-[#0E1626] border border-slate-800 text-slate-400 text-xs flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-violet-400 animate-ping" />
+            <div className="p-4 rounded-3xl bg-white border border-[#E7E3D9] text-[#737A73] text-xs flex items-center gap-2 font-bengali shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-[#24483B] animate-ping" />
               <span>প্রস্তুতি এআই বিশ্লেষণ করছে এবং উত্তর প্রস্তুত করছে...</span>
             </div>
           </div>
@@ -189,14 +189,14 @@ export default function AIAssistantPage() {
       {/* Suggested Followups */}
       {suggestedPrompts.length > 0 && !isLoading && (
         <div className="py-2 flex items-center gap-2 overflow-x-auto">
-          <span className="text-[11px] font-bold text-slate-400 flex items-center gap-1 flex-shrink-0">
-            <Lightbulb className="w-3.5 h-3.5 text-amber-400" /> প্রস্তাবিত প্রশ্ন:
+          <span className="text-[11px] font-semibold text-[#737A73] flex items-center gap-1 flex-shrink-0 font-bengali">
+            <Lightbulb className="w-3.5 h-3.5 text-[#B69A70]" /> প্রস্তাবিত প্রশ্ন:
           </span>
           {suggestedPrompts.slice(0, 3).map((prompt, pIdx) => (
             <button
               key={pIdx}
               onClick={() => handleSendMessage(prompt)}
-              className="px-3 py-1 rounded-xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 text-slate-300 hover:text-white text-xs whitespace-nowrap transition-colors flex-shrink-0"
+              className="px-3 py-1.5 rounded-xl bg-white border border-[#E7E3D9] hover:border-[#24483B]/50 hover:bg-[#FAF8F3] text-[#252A27] text-xs whitespace-nowrap transition-colors flex-shrink-0 font-bengali shadow-xs"
             >
               {prompt}
             </button>
@@ -212,7 +212,7 @@ export default function AIAssistantPage() {
         }}
         className="pt-2"
       >
-        <div className="relative flex items-center bg-[#0E1626] border border-slate-800 rounded-2xl p-1.5 focus-within:border-violet-500 focus-within:ring-2 focus-within:ring-violet-500/20 shadow-xl transition-all">
+        <div className="relative flex items-center bg-white border border-[#E7E3D9] rounded-2xl p-1.5 focus-within:border-[#24483B] focus-within:ring-2 focus-within:ring-[#24483B]/20 shadow-xs transition-all">
           <textarea
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
@@ -224,12 +224,12 @@ export default function AIAssistantPage() {
             }}
             placeholder="আপনার প্রশ্ন, গাণিতিক সমস্যা বা ব্যাখ্যার অনুরোধ লিখুন (Enter চাপুন)..."
             rows={1}
-            className="w-full pl-4 pr-12 py-2.5 bg-transparent text-sm text-slate-100 placeholder-slate-400 outline-none resize-none"
+            className="w-full pl-4 pr-12 py-2.5 bg-transparent text-sm text-[#252A27] placeholder-[#737A73] outline-none resize-none font-bengali"
           />
           <button
             type="submit"
             disabled={!inputText.trim() || isLoading}
-            className="absolute right-2 p-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white disabled:opacity-40 shadow-md transition-all"
+            className="absolute right-2 p-2.5 rounded-xl bg-[#24483B] hover:bg-[#1B362C] text-white disabled:opacity-40 shadow-xs transition-all"
           >
             <Send className="w-4 h-4" />
           </button>
